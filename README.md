@@ -4,7 +4,9 @@ My project is a program to give the user the list of restaurant in six cities: B
 ### How to Run
 1. The user needs to give the program the city they are in, and the city needs to be one of the six cities. 
 2. Project documentation
-3. There will be 8 options for the user to choose. And for some options, the user needs to follow the instructions, and gives the program commands. Types of food: Pizza, Hamburger, Asian Food, and the type of food user added. Cities: Boulder, Denver, Longmont, Broomfield, Brighton, and Lafayette. 
+3. There will be 8 options for the user to choose. And for some options, the user needs to follow the instructions, and gives the program commands. 
+4. Types of food: Pizza, Hamburger, Asian Food, and the type of food user added. 
+5. Cities: Boulder, Denver, Longmont, Broomfield, Brighton, and Lafayette. 
 ```go
     /*
     ================Menu================
