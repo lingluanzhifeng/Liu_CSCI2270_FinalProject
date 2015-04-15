@@ -34,5 +34,5 @@ The program requires to include serverval functions.
 The program is for Linux and built by C++.
 ### Group Members
 Yuming Liu
-### Contributores
+### Contributors
 ### Open Issues/Bugs
