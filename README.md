@@ -19,7 +19,17 @@ My project is a program to give the user the list of restaurant in six cities: B
     */
 ```
 ### Dependencies
+The program requires to include serverval functions.
+```go
+    #include <iostream>
+    #include <vector>
+    #include <string>
+    
+    using namespace std;
+````
 ### System Requirements
+The program is for Linux and built by C++.
 ### Group Members
-### Contributoes
+Yuming Liu
+### Contributores
 ### Open Issues/Bugs
