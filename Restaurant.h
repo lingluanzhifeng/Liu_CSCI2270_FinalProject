@@ -4,12 +4,12 @@
 
 struct vertex;
 
-struct adjVertex{
+struct adjVertex{//struct for adjacent cities
     vertex *v;
     int weight;
 };
 
-struct vertex{
+struct vertex{ // struct for each city
     std::string name;
     int distance_to_origin;
     int ID;
@@ -23,7 +23,7 @@ struct queueVertex{
     std::vector <vertex> path; //vertices on the path
 };
 
-struct Restaurant_str{
+struct Restaurant_str{//struct for restaurants
     int price;
     std::string type;
     std::string city;
@@ -42,17 +42,17 @@ class Restaurant
     public:
         Restaurant();
         ~Restaurant();
-        void initial_all();
+        void initial_all();//implement cities and restaurants
         void implement_graph();
         void implement_restaurants();
 
-        void insert_restaurant(std::string in_title, std::string in_city, std::string in_name, int in_price);
-        void print_all_restaurants();
-        void print_one_type_restaurants(std::string type);
-        void print_one_city_restaurants(std::string city);
-        void print_nearest_restaurants(std::string position);
-        void print_minimum_cost_each_restaurants();
-        void print_total_cost_one_restaurant(std::string name);
+        void insert_restaurant(std::string in_title, std::string in_city, std::string in_name, int in_price);//for users to add their restaurants
+        void print_all_restaurants();//print all of the restaurants
+        void print_one_type_restaurants(std::string type);//print the restaurants which users choose
+        void print_one_city_restaurants(std::string city);//print restaurants in one city
+        void print_nearest_restaurants(std::string position);//print restaurants near the user's city
+        void print_minimum_cost_each_restaurants();//print the minimum costs for each restaurants
+        void print_total_cost_one_restaurant(std::string name);//print the cost for one restaurant
 
 
         void addEdge(std::string v1, std::string v2, int weight);
