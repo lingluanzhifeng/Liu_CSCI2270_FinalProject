@@ -11,7 +11,7 @@ Restaurant::Restaurant(){}
 Restaurant::~Restaurant(){}
 
 void Restaurant::print_menu(){
-    cout << "================Menu================" << endl;
+    cout << "================Menu===============" << endl;
     cout << "1. Insert Restaurant" << endl;
     cout << "2. List all restaurants" << endl;
     cout << "3. One type restaurants" << endl;
@@ -21,6 +21,7 @@ void Restaurant::print_menu(){
     cout << "7. Total cost for chosen restaurant" << endl;
     cout << "8. Restaurant with minimum cost" << endl;
     cout << "9. Quit" << endl;
+    cout << "===================================" << endl;
 }
 
 void Restaurant::addVertex(std::string n){//function to add cities
@@ -99,7 +100,7 @@ void Restaurant::initial_all(){
     implement_restaurants();
 }
 void Restaurant::print_all_restaurants(){
-    cout << "\n============================================" << endl;
+    cout << "============================================" << endl;
     for(int i = 0; i < restaurant_array.size(); i++){
         cout << restaurant_array[i].type << ":  " << restaurant_array[i].name << ":  " << restaurant_array[i].city << ":  " << restaurant_array[i].price << endl;
     }
@@ -114,7 +115,7 @@ void Restaurant::print_one_type_restaurants(std::string type){
     }
     if (findit == false){cout << "The type of food is not in the system" << endl;}
     else{
-        cout << "\n=============================" << endl;
+        cout << "=============================" << endl;
         for(int i = 0; i < restaurant_array.size(); i++){
             if (type == restaurant_array[i].type){
                 cout << restaurant_array[i].name << ":  " << restaurant_array[i].city << ":  " << restaurant_array[i].price << endl;
@@ -133,7 +134,7 @@ void Restaurant::print_one_city_restaurants(std::string city){
     }
     if (findit == false){cout << "The city is not in the system" << endl;}
     else{
-        cout << "\n==============================" << endl;
+        cout << "==============================" << endl;
         for(int i = 0; i < restaurant_array.size(); i++){
             if (city == restaurant_array[i].city){
                 cout << restaurant_array[i].type << ":  " << restaurant_array[i].name << ":  " << restaurant_array[i].price << endl;
@@ -146,11 +147,14 @@ void Restaurant::print_nearest_restaurants(std::string position){
     vertex a;
     bool finditt = false;
     for (int i = 0; i < vertices.size(); i++){
-        if (vertices[i].name == position){a = vertices[i]; finditt = true;}
+        if (vertices[i].name == position){
+            a = vertices[i];
+            finditt = true;
+        }
     }
     bool findit = false;
     if (finditt == true){
-        cout << "\n==============================" << endl;
+        cout << "==============================" << endl;
         for(int i = 0; i < restaurant_array.size(); i++){
             if (position == restaurant_array[i].city){
                 cout << restaurant_array[i].type << ":  " << restaurant_array[i].name << ":  " << restaurant_array[i].price << endl;
@@ -168,11 +172,11 @@ void Restaurant::print_nearest_restaurants(std::string position){
                 city_name = a.adj[i].v->name;
             }
         }
-        cout << "\n==============================" << endl;
+        cout << "==============================" << endl;
         print_one_city_restaurants(city_name);
         cout << "==============================\n" << endl;
     }
-    if (finditt = false){cout << "The position you are currently at is not in the system";}
+    if (finditt == false){cout << "The position you are currently at is not in the system"<<endl;}
 }
 queueVertex* Restaurant::Dijkstra_algorithm (std::string startingcity, std::string destination){
     vertex *s = NULL;
@@ -276,7 +280,7 @@ void Restaurant::print_minimum_cost_each_restaurants(double price, double mile, 
         if (vertices[i].name == position){findit = true;}
     }
     if (findit == true){
-        cout << "\n============================================" << endl;
+        cout << "============================================" << endl;
         for (int i = 0; i <vertices.size() && findit == true; i++){
             queueVertex *a;//give a temp queueVertex
             a = Dijkstra_algorithm(position, vertices[i].name);
@@ -320,12 +324,13 @@ void Restaurant::print_total_cost_one_restaurant(std::string name, std::string p
             cost = price * (distance/mile);//compute how much will cost to drive to the city from the user's position
         }
         total_cost = cost + temp.price;
-        cout << endl;
         cout << "=====================" << endl;
         cout << temp.name << ":  " << temp.type << endl;
-        cout << "The route to the restaurant: ";
-        print_shortest_distance(a, position, city);
-        cout << endl;
+        if (temp.city != position){
+            cout << "The route to the restaurant: ";
+            print_shortest_distance(a, position, city);
+            cout << endl;
+        }
         cout << "Total minimum cost: ";
         cout << fixed << setprecision(2) << total_cost << endl;
         cout << "=====================" << endl;
@@ -362,7 +367,6 @@ void Restaurant::find_the_minimum_cost (double price, double mile, std::string p
                 }
             }
         }
-        cout << endl;
         cout << "=====================" << endl;
         cout << best.name << ":  " << best.type;
         if (best.city != position){
