@@ -45,21 +45,18 @@ class Restaurant
         void initial_all();//implement cities and restaurants
         void implement_graph();
         void implement_restaurants();
-
-        void insert_restaurant(std::string in_title, std::string in_city, std::string in_name, int in_price);//for users to add their restaurants
+        void insert_restaurant(std::string in_type, std::string in_city, std::string in_name, int in_price);//for users to add their restaurants
+        void addEdge(std::string v1, std::string v2, int weight);
+        void addVertex(std::string name);
         void print_all_restaurants();//print all of the restaurants
         void print_one_type_restaurants(std::string type);//print the restaurants which users choose
         void print_one_city_restaurants(std::string city);//print restaurants in one city
         void print_nearest_restaurants(std::string position);//print restaurants near the user's city
+
         void print_minimum_cost_each_restaurants();//print the minimum costs for each restaurants
         void print_total_cost_one_restaurant(std::string name);//print the cost for one restaurant
 
-
-        void addEdge(std::string v1, std::string v2, int weight);
-        void addVertex(std::string name);
         void displayEdges();
-        int get_vertices_size();
-
         queueVertex *Dijkstra_algorithm (std::string startingcity, std::string destination);
         void print_shortest_distance (queueVertex *x, std::string startingcity, std::string destination);
 
