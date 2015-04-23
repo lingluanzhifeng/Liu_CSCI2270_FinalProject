@@ -12,12 +12,13 @@ My project is a program to give the user the list of restaurant in six cities: B
     ================Menu================
     1. Insert Restaurant
     2. List all restaurants
-    3. List certain type restaurants
-    4. List restaurants in certain city
-    5. List nearest restaurants
+    3. One type restaurants
+    4. Restaurants in a city
+    5. Nearest restaurants
     6. Minimum cost for each restaurant
     7. Total cost for chosen restaurant
-    8. Quit
+    8. Restaurant with minimum cost
+    9. Quit
     */
 ```
 ### Dependencies
