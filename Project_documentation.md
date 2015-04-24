@@ -37,9 +37,9 @@ Pre-condition: The user of the program needs to provide the name of the restaura
 
 The out put is like: 
 
-Name:  Type
+Name:  Type(:  City)(if they are in the same city)
 
-The route to the restaurant: 
+The route to the restaurant: (if they are in different city)
 
 Total minimum cost: 
 ### Restaurant with minimum cost
