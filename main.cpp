@@ -6,10 +6,9 @@ int main()
 {
     string position;
     cout << "Enter current city: " << endl;
-
     getline(cin, position);
-
     Restaurant r;
+    r.initial_all();
     r.print_menu();
     int command;
     string type;
@@ -18,7 +17,22 @@ int main()
     cin >> command;
     while (command != 9){
         if (command == 1){
-            r.initial_all();
+            string city1;
+            string type1;
+            string name1;
+            double price1;
+            cout << "Enter name of restaurant: " << endl;
+            cin.ignore();
+            getline(cin, name1);
+            cout << "Enter type of food: " << endl;
+
+            getline(cin, type1);
+            cout << "Enter city of restaurant: " << endl;
+
+            getline(cin, city1);
+            cout << "Enter the price of the restaurant for one meal: " << endl;
+            cin >> price1;
+            r.insert_restaurant(type1, city1, name1, price1);
             r.print_menu();
             cin >> command;
         }
