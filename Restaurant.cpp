@@ -4,12 +4,9 @@
 #include <string>
 #include <queue>
 #include <iomanip>
-
 using namespace std;
-
 Restaurant::Restaurant(){}
 Restaurant::~Restaurant(){}
-
 void Restaurant::print_menu(){
     cout << "================Menu===============" << endl;
     cout << "1. Insert Restaurant" << endl;
@@ -23,10 +20,9 @@ void Restaurant::print_menu(){
     cout << "9. Quit" << endl;
     cout << "===================================" << endl;
 }
-
 void Restaurant::addVertex(std::string n){//function to add cities
     bool found = false; // check if the vertex is added
-    for(int i = 0; i < vertices.size(); i++){
+    for(unsigned int i = 0; i < vertices.size(); i++){
         if(vertices[i].name == n){
             found = true;
             cout<<vertices[i].name<<" found."<<endl;
@@ -39,11 +35,10 @@ void Restaurant::addVertex(std::string n){//function to add cities
         vertices.push_back(v);
     }
 }
-
 void Restaurant::addEdge(std::string v1, std::string v2, double weight){//function to add edges
-    for(int i = 0; i < vertices.size(); i++){
+    for(unsigned int i = 0; i < vertices.size(); i++){
         if(vertices[i].name == v1){
-            for(int j = 0; j < vertices.size(); j++){
+            for(unsigned int j = 0; j < vertices.size(); j++){
                 if(vertices[j].name == v2 && i != j){
                     adjVertex av;
                     av.v = &vertices[j];
@@ -59,7 +54,6 @@ void Restaurant::addEdge(std::string v1, std::string v2, double weight){//functi
         }
     }
 }
-
 void Restaurant::implement_graph(){
     addVertex("Boulder");
     addVertex("Brighton");
@@ -101,14 +95,14 @@ void Restaurant::initial_all(){
 }
 void Restaurant::print_all_restaurants(){
     cout << "============================================" << endl;
-    for(int i = 0; i < restaurant_array.size(); i++){
+    for(unsigned int i = 0; i < restaurant_array.size(); i++){
         cout << restaurant_array[i].type << ":  " << restaurant_array[i].name << ":  " << restaurant_array[i].city << ":  " << restaurant_array[i].price << endl;
     }
     cout << "============================================\n" << endl;
 }
 void Restaurant::print_one_type_restaurants(std::string type){
     bool findit = false;
-    for(int i = 0; i < restaurant_array.size(); i++){
+    for(unsigned int i = 0; i < restaurant_array.size(); i++){
         if (type == restaurant_array[i].type){
             findit = true;
         }
@@ -116,7 +110,7 @@ void Restaurant::print_one_type_restaurants(std::string type){
     if (findit == false){cout << "The type of food is not in the system" << endl;}
     else{
         cout << "=============================" << endl;
-        for(int i = 0; i < restaurant_array.size(); i++){
+        for(unsigned int i = 0; i < restaurant_array.size(); i++){
             if (type == restaurant_array[i].type){
                 cout << restaurant_array[i].name << ":  " << restaurant_array[i].city << ":  " << restaurant_array[i].price << endl;
             }
@@ -127,7 +121,7 @@ void Restaurant::print_one_type_restaurants(std::string type){
 }
 void Restaurant::print_one_city_restaurants(std::string city){
     bool findit = false;
-    for(int i = 0; i < restaurant_array.size(); i++){
+    for(unsigned int i = 0; i < restaurant_array.size(); i++){
         if (city == restaurant_array[i].city){
             findit = true;
         }
@@ -135,7 +129,7 @@ void Restaurant::print_one_city_restaurants(std::string city){
     if (findit == false){cout << "The city is not in the system" << endl;}
     else{
         cout << "==============================" << endl;
-        for(int i = 0; i < restaurant_array.size(); i++){
+        for(unsigned int i = 0; i < restaurant_array.size(); i++){
             if (city == restaurant_array[i].city){
                 cout << restaurant_array[i].type << ":  " << restaurant_array[i].name << ":  " << restaurant_array[i].price << endl;
             }
@@ -146,7 +140,7 @@ void Restaurant::print_one_city_restaurants(std::string city){
 void Restaurant::print_nearest_restaurants(std::string position){
     vertex a;
     bool finditt = false;
-    for (int i = 0; i < vertices.size(); i++){
+    for(unsigned int i = 0; i < vertices.size(); i++){
         if (vertices[i].name == position){
             a = vertices[i];
             finditt = true;
@@ -155,7 +149,7 @@ void Restaurant::print_nearest_restaurants(std::string position){
     bool findit = false;
     if (finditt == true){
         cout << "==============================" << endl;
-        for(int i = 0; i < restaurant_array.size(); i++){
+        for(unsigned int i = 0; i < restaurant_array.size(); i++){
             if (position == restaurant_array[i].city){
                 cout << restaurant_array[i].type << ":  " << restaurant_array[i].name << ":  " << restaurant_array[i].price << endl;
                 findit = true;
@@ -166,7 +160,7 @@ void Restaurant::print_nearest_restaurants(std::string position){
     if (findit == false && finditt == true){
         string city_name;
         int temp = 10000;
-        for(int i = 0; i < a.adj.size(); i++){
+        for(unsigned int i = 0; i < a.adj.size(); i++){
             if (a.adj[i].weight <= temp){
                 temp = a.adj[i].weight;
                 city_name = a.adj[i].v->name;
@@ -181,7 +175,7 @@ void Restaurant::print_nearest_restaurants(std::string position){
 queueVertex* Restaurant::Dijkstra_algorithm (std::string startingcity, std::string destination){
     vertex *s = NULL;
     vertex *d = NULL;
-    for (int i = 0; i < vertices.size(); i++){
+    for(unsigned int i = 0; i < vertices.size(); i++){
         if (vertices[i].name == startingcity){
             s = &vertices[i];//set s == startingcity node
         }
@@ -200,7 +194,7 @@ queueVertex* Restaurant::Dijkstra_algorithm (std::string startingcity, std::stri
     }
     else{
         int previous[6];
-        for (int i = 0; i < vertices.size(); i++){
+        for(unsigned int i = 0; i < vertices.size(); i++){
             vertices[i].visited = false;
             vertices[i].distance_to_origin = 10000;
             previous[vertices[i].ID] = -1;
@@ -218,8 +212,8 @@ queueVertex* Restaurant::Dijkstra_algorithm (std::string startingcity, std::stri
             minDistance = 10000;//initialize distance
             a = NULL;
             u = NULL;
-            for (int i = 0; i < qv->path.size(); i++){//for each u in solved
-                for (int j = 0; j < qv->path[i].adj.size(); j++){//for each vertex adjacent to u
+            for(unsigned int i = 0; i < qv->path.size(); i++){//for each u in solved
+                for(unsigned int j = 0; j < qv->path[i].adj.size(); j++){//for each vertex adjacent to u
                     if (qv->path[i].adj[j].weight != 0 && qv->path[i].adj[j].weight !=-1){
                         if (qv->path[i].adj[j].v->visited == false){
                             temp = qv->path[i].adj[j].weight + qv->path[i].distance_to_origin;
@@ -248,13 +242,13 @@ queueVertex* Restaurant::Dijkstra_algorithm (std::string startingcity, std::stri
     return NULL;
 }
 void Restaurant::print_shortest_distance (queueVertex *x, string startingcity, string destination){
-    vertex *s = NULL;
+    //vertex *s = NULL;
     vertex *d = NULL;
-    for (int i = 0; i < vertices.size(); i++){
-        if (vertices[i].name == startingcity){
-            s = &vertices[i];
-        }
-        if (vertices[i].name == destination){
+    for(unsigned int i = 0; i < vertices.size(); i++){
+        //if (vertices[i].name == startingcity){
+        //    s = &vertices[i];
+        //}
+        if(vertices[i].name == destination){
             d = &vertices[i];
         }
     }
@@ -266,7 +260,7 @@ void Restaurant::print_shortest_distance (queueVertex *x, string startingcity, s
         d = &vertices[d_id];
         d_id = x->p[d->ID];
     }
-    for (int i = cities.size()-1; i >= 0; i--){
+    for(unsigned int i = cities.size()-1; i >= 0; i--){
         cout << " " << cities[i];
     }
 
@@ -276,12 +270,12 @@ void Restaurant::print_minimum_cost_each_restaurants(double price, double mile, 
     double total_cost = 0;
     double distance = 0;
     bool findit = false;
-    for (int i = 0; i < vertices.size(); i++){
+    for(unsigned int i = 0; i < vertices.size(); i++){
         if (vertices[i].name == position){findit = true;}
     }
     if (findit == true){
         cout << "============================================" << endl;
-        for (int i = 0; i <vertices.size() && findit == true; i++){
+        for(unsigned int i = 0; i <vertices.size() && findit == true; i++){
             queueVertex *a;//give a temp queueVertex
             a = Dijkstra_algorithm(position, vertices[i].name);
             if (a->distance != 0){
@@ -289,7 +283,7 @@ void Restaurant::print_minimum_cost_each_restaurants(double price, double mile, 
                 cost = price * (distance/mile);//compute how much will cost to drive to the city from the user's position
 
             }
-            for (int j = 0; j < restaurant_array.size(); j++){
+            for(unsigned int j = 0; j < restaurant_array.size(); j++){
                 if (restaurant_array[j].city == vertices[i].name){
                     total_cost = cost + restaurant_array[j].price;
                     cout << restaurant_array[j].city << ":  " << restaurant_array[j].type << ":  " << restaurant_array[j].name << ":  ";
@@ -304,7 +298,7 @@ void Restaurant::print_minimum_cost_each_restaurants(double price, double mile, 
 void Restaurant::print_total_cost_one_restaurant(std::string name, std::string position, double price, double mile){
     bool findit = false;
     Restaurant_str temp;
-    for (int i = 0; i < restaurant_array.size(); i++){
+    for(unsigned int i = 0; i < restaurant_array.size(); i++){
         if (restaurant_array[i].name == name){
             temp = restaurant_array[i];
             findit = true;
@@ -345,18 +339,18 @@ void Restaurant::find_the_minimum_cost (double price, double mile, std::string p
     double mincost = 10000;
     Restaurant_str best;
     queueVertex *best2;
-    for (int i = 0; i < vertices.size(); i++){
+    for(unsigned int i = 0; i < vertices.size(); i++){
         if (vertices[i].name == position){findit = true;}
     }
     if (findit == true){
-        for (int i = 0; i <vertices.size() && findit == true; i++){
+        for(unsigned int i = 0; i <vertices.size() && findit == true; i++){
             queueVertex *a;//give a temp queueVertex
             a = Dijkstra_algorithm(position, vertices[i].name);
             if (a->distance != 0){
                 distance = a->distance;
                 cost = price * (distance/mile);//compute how much will cost to drive to the city from the user's position
             }
-            for (int j = 0; j < restaurant_array.size(); j++){
+            for(unsigned int j = 0; j < restaurant_array.size(); j++){
                 if (restaurant_array[j].city == vertices[i].name){
                     total_cost = cost + restaurant_array[j].price;
                     if (total_cost <= mincost){
@@ -383,4 +377,3 @@ void Restaurant::find_the_minimum_cost (double price, double mile, std::string p
     }
     if (findit == false){cout << "The position you are currently at is not in the system!" << endl;}
 }
-
