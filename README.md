@@ -35,6 +35,6 @@ The program is for Linux and built by C++.
 ### Group Members
 Yuming Liu
 ### Contributors
-Yuming Liu
+
 ### Open Issues/Bugs
 The code can only track the restaurants in six cities, so that the user cannot ad their own cities, but they could add their own restaurants in these six cities. The reason is that: the user needs to provide the distance between the new city and other cities. 
